@@ -35,6 +35,16 @@ def generating_fourier_state(n_qubits, m):
         # This will help us to see how well we have done.
         qml.adjoint(qml.QFT)(wires=range(n_qubits))
 
+
+        #Apply Hadamard to each qubit 
+
+        qml.Hadamard(wires=range(n_qubits))
+
+        #apply rotation gates to each qubit
+
+        for i in range(n_qubits):
+            qml.RZ(wires = i, phi = angles[i])
+
         # We return the probabilities of seeing each basis state.
         return qml.probs(wires=range(n_qubits))
 
