@@ -19,6 +19,36 @@ def compare_circuits(angles):
 
     # define a device and quantum functions/circuits here
 
+    # n_qubits = len(angles)
+    n_qubits = 1
+
+    dev = qml.device("default.qubit", wires=n_qubits)
+
+    def circuit1(angles):
+
+        qml.RX(phi = angles[0], wires = 0)
+        qml.RY(phi = angles[1], wires = 0)
+
+        # Measurement 
+
+        probability1 = qml.expval(qml.PauliX(0))
+
+        return probability1
+
+    def circuit2(angles):
+
+        qml.RY(phi = angles[1], wires = 0)
+        qml.RX(phi = angles[0], wires = 0)
+
+        # Measurement 
+
+        probability2 = qml.expval(qml.PauliX(0))
+
+        return probability2
+
+    def compare_results(probability1, probability2):
+        return np.abs(probability1 - probability2)
+
     # QHACK #
 
 
