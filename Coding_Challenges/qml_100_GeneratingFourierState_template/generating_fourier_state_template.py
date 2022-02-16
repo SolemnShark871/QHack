@@ -46,7 +46,7 @@ def generating_fourier_state(n_qubits, m):
             qml.RZ(wires = i, phi = angles[i])
 
         # We return the probabilities of seeing each basis state.
-        return qml.probs(wires=range(n_qubits))
+    
 
     def error(angles):
         """This function will determine, given a set of angles, how well it approximates
@@ -57,6 +57,11 @@ def generating_fourier_state(n_qubits, m):
         # QHACK #
 
         # The return error should be smaller when the state m is more likely to be obtained.
+
+
+        # Define the desired (number) state as the expected output probabilities for the QFT
+
+
 
         # QHACK #
 
